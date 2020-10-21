@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo "Creating build environment (heroku-16)..."
-docker build --pull -t odooku-build-heroku-16 .
+echo "Creating build environment (heroku-18)..."
+docker build --pull -t odooku-build-heroku-18 .
 
 if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] ||  [ -z "$S3_BUCKET" ];
 then
@@ -21,7 +21,7 @@ for target in "${targets[@]}"; do
     -e AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" \
     -e AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY" \
     -e S3_BUCKET="$S3_BUCKET" \
-    -e S3_PREFIX=heroku-16 \
-    odooku-build-heroku-16 \
+    -e S3_PREFIX=heroku-18 \
+    odooku-build-heroku-18 \
     bob deploy --overwrite "$target"
 done
